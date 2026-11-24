@@ -4,134 +4,67 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Артём Ветров — Creative Developer</title>
-  <meta name="description" content="Портфолио: фронтенд-разработчик, анимации, интерфейсы, эксперименты с web">
+  <meta name="description" content="Интерактивное 3D-портфолио: катайся на машинке, находи проекты">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;500;700;900&family=Manrope:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <div class="noise"></div>
 
-  <div id="preloader">
-    <div class="preloader-count">0</div>
-    <div class="preloader-bar"><span></span></div>
+  <div id="loader">
+    <div class="loader-logo">АВ<span>.</span></div>
+    <div class="loader-status">Загружаю мир…</div>
+    <div class="loader-tip">Biblioteka Three.js — нужна сеть</div>
   </div>
 
-  <div class="progress-bar"><span></span></div>
+  <canvas id="scene"></canvas>
 
-  <div class="cursor"></div>
-  <div class="cursor-follow"></div>
-
-  <header class="header">
-    <a href="#" class="logo" data-magnetic>АВ<span>.</span></a>
-    <nav>
-      <a href="#about" data-magnetic>Обо мне</a>
-      <a href="#projects" data-magnetic>Проекты</a>
-      <a href="#contact" data-magnetic>Контакт</a>
-    </nav>
-  </header>
-
-  <main>
-    <section class="hero" id="hero">
-      <div class="blob blob-1"></div>
-      <div class="blob blob-2"></div>
-      <div class="blob blob-3"></div>
-      <h1 class="hero-title">
-        <span class="line"><span data-split>АРТЁМ</span></span>
-        <span class="line"><span class="outline" data-split>ВЕТРОВ</span></span>
-      </h1>
-      <p class="hero-sub">Креативный разработчик — интерфейсы, анимации, <span id="typed"></span><span class="caret"></span></p>
-      <div class="hero-scroll" data-magnetic>
-        <span></span>
-      </div>
-    </section>
-
-    <div class="marquee">
-      <div class="marquee-track">
-        <span>FRONTEND&nbsp;·&nbsp;ANIMATION&nbsp;·&nbsp;WEBGL&nbsp;·&nbsp;UX&nbsp;·&nbsp;MOTION&nbsp;·&nbsp;</span>
-        <span>FRONTEND&nbsp;·&nbsp;ANIMATION&nbsp;·&nbsp;WEBGL&nbsp;·&nbsp;UX&nbsp;·&nbsp;MOTION&nbsp;·&nbsp;</span>
-      </div>
+  <div class="hud">
+    <div class="hud-name">Артём Ветров<span>creative developer</span></div>
+    <div class="hud-hint">
+      <span class="key">W</span><span class="key">A</span><span class="key">S</span><span class="key">D</span>
+      <em>или стрелки — ехать</em>
+      <span class="key wide">CTRL</span><em>сигналить</em>
     </div>
+  </div>
 
-    <section class="section" id="about">
-      <h2 class="section-title" data-reveal>Обо мне</h2>
-      <div class="about-grid">
-        <p class="about-text" data-reveal>
-          Делаю сайты, которые хочется листать. Пять лет строю интерфейсы:
-          от сложных дашбордов до иммерсивных лендингов с 3D и скролл-анимациями.
-          Верю, что хороший сайт — это продукт, дизайн и производительность одновременно.
-        </p>
-        <div class="stats">
-          <div class="stat" data-reveal>
-            <div class="stat-num"><span data-count="42">0</span>+</div>
-            <div class="stat-label">проектов</div>
-          </div>
-          <div class="stat" data-reveal>
-            <div class="stat-num"><span data-count="5">0</span> лет</div>
-            <div class="stat-label">в разработке</div>
-          </div>
-          <div class="stat" data-reveal>
-            <div class="stat-num"><span data-count="18">0</span></div>
-            <div class="stat-label">довольных клиентов</div>
-          </div>
-        </div>
-      </div>
-    </section>
+  <div id="panel">
+    <button id="panel-close" aria-label="Закрыть">×</button>
+    <div id="panel-tag"></div>
+    <h2 id="panel-title"></h2>
+    <p id="panel-text"></p>
+    <a id="panel-link" href="#" target="_blank" rel="noopener"></a>
+  </div>
 
-    <section class="section" id="projects">
-      <h2 class="section-title" data-reveal>Проекты</h2>
-      <div class="projects">
-        <a href="#" class="project" data-reveal data-tilt>
-          <div class="project-media" data-bg="1"></div>
-          <div class="project-info">
-            <h3>Nebula</h3>
-            <p>Иммерсивный лендинг для стартапа · WebGL, GSAP</p>
-            <span class="project-link">Смотреть →</span>
-          </div>
-        </a>
-        <a href="#" class="project" data-reveal data-tilt>
-          <div class="project-media" data-bg="2"></div>
-          <div class="project-info">
-            <h3>Pulse</h3>
-            <p>Аналитический дашборд в реальном времени · React, D3</p>
-            <span class="project-link">Смотреть →</span>
-          </div>
-        </a>
-        <a href="#" class="project" data-reveal data-tilt>
-          <div class="project-media" data-bg="3"></div>
-          <div class="project-info">
-            <h3>Kiosk</h3>
-            <p>Платформа электронной коммерции · Vue, CMS</p>
-            <span class="project-link">Смотреть →</span>
-          </div>
-        </a>
-        <a href="#" class="project" data-reveal data-tilt>
-          <div class="project-media" data-bg="4"></div>
-          <div class="project-info">
-            <h3>Orbit</h3>
-            <p>Портал для дизайн-студии ·Scroll-анимации, WebGL</p>
-            <span class="project-link">Смотреть →</span>
-          </div>
-        </a>
-      </div>
-    </section>
+  <div class="touch">
+    <div class="touch-group">
+      <button data-k="left">◀</button>
+      <button data-k="forward">▲</button>
+      <button data-k="back">▼</button>
+      <button data-k="right">▶</button>
+    </div>
+  </div>
 
-    <section class="section" id="contact">
-      <h2 class="section-title" data-reveal>Есть идея?</h2>
-      <p class="contact-sub" data-reveal>Напиши мне — сделаем что-то крутое</p>
-      <a href="mailto:hi@vetrov.dev" class="contact-btn" data-magnetic data-reveal>hi@vetrov.dev</a>
-      <footer>
-        <span>© 2025 Артём Ветров</span>
-        <div class="socials">
-          <a href="#">GitHub</a>
-          <a href="#">Telegram</a>
-          <a href="#">Dribbble</a>
-        </div>
-      </footer>
-    </section>
-  </main>
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+    }
+  }
+  </script>
+  <script>
+    setTimeout(function () {
+      var l = document.getElementById('loader');
+      if (l && !l.classList.contains('done')) {
+        l.classList.add('error');
+        l.querySelector('.loader-status').textContent = 'Не удалось загрузить Three.js';
+        l.querySelector('.loader-tip').textContent = 'Нужен интернет для CDN — проверь сеть и обнови страницу';
+      }
+    }, 9000);
+  </script>
+  <script type="module" src="script.js"></script>
 
-  <script src="script.js"></script>
 </body>
 </html>
