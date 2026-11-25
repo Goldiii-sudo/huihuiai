@@ -16,7 +16,7 @@
   <div id="loader">
     <div class="loader-logo">АВ<span>.</span></div>
     <div class="loader-status">Загружаю мир…</div>
-    <div class="loader-tip">Biblioteka Three.js — нужна сеть</div>
+    <div class="loader-tip">Открыть консоль браузера — F12</div>
   </div>
 
   <canvas id="scene"></canvas>
@@ -47,24 +47,18 @@
     </div>
   </div>
 
-  <script type="importmap">
-  {
-    "imports": {
-      "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
-    }
-  }
-  </script>
   <script>
     setTimeout(function () {
       var l = document.getElementById('loader');
-      if (l && !l.classList.contains('done')) {
+      if (l && !window.__sceneLoaded) {
         l.classList.add('error');
-        l.querySelector('.loader-status').textContent = 'Не удалось загрузить Three.js';
-        l.querySelector('.loader-tip').textContent = 'Нужен интернет для CDN — проверь сеть и обнови страницу';
+        l.querySelector('.loader-status').textContent = 'Сцена не запустилась';
+        l.querySelector('.loader-tip').textContent = 'Смотри ошибки в консоли браузера (F12)';
       }
     }, 9000);
   </script>
-  <script type="module" src="script.js"></script>
+  <script src="vendor/three.min.js"></script>
+  <script src="script.js"></script>
 
 </body>
 </html>

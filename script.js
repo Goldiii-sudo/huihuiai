@@ -1,5 +1,3 @@
-import * as THREE from "three";
-
 const canvas = document.getElementById("scene");
 const loader = document.getElementById("loader");
 const loaderStatus = document.querySelector(".loader-status");
@@ -17,6 +15,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.outputEncoding = THREE.sRGBEncoding;
 renderer.toneMappingExposure = 1.1;
 
 const scene = new THREE.Scene();
@@ -477,4 +476,5 @@ window.addEventListener("resize", () => {
 });
 
 loader.classList.add("done");
+window.__sceneLoaded = true;
 requestAnimationFrame(step);
